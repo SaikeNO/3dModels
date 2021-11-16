@@ -3,9 +3,12 @@
 namespace App\View\Composers;
 
 use Roots\Acorn\View\Composer;
+use Roots\Acorn\View\Composers\Concerns\AcfFields;
+
 
 class App extends Composer
 {
+    use AcfFields;
     /**
      * List of views served by this composer.
      *
@@ -23,6 +26,7 @@ class App extends Composer
     public function with()
     {
         return [
+            // 'fields' => collect($this->fields())->toArray(),
             'siteName' => $this->siteName(),
         ];
     }
