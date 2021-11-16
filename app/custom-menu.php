@@ -31,4 +31,3 @@ function get_child_menu_items($menu_array, $parent_id){
 
 }
 
-?>
