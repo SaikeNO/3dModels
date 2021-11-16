@@ -90,7 +90,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 
 Edit `app/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, and sidebars.
 
-
+If You want use svg icons please create folder named `images/svg`. Paste svg code to `.blade.php` file. To use svg in .blade.php file use `@include('icon::svgFileName')`.
 ### Build commands
 
 - `yarn start` — Compile assets when file changes are made, start Browsersync session
