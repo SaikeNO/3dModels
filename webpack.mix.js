@@ -12,6 +12,11 @@ const mix = require('laravel-mix');
  */
 
 mix.setPublicPath('./public').browserSync('prograffingtheme.local');
+if (!mix.inProduction()) {
+  mix.webpackConfig({
+    devtool: 'inline-source-map',
+  });
+}
 
 mix.sass('resources/styles/app.scss', 'styles').options({
   processCssUrls: false,
