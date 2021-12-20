@@ -14,6 +14,8 @@ use function Roots\asset;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
+    js_to_footer();
+    
     wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js'], null, true);
 
@@ -21,8 +23,11 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), false, null);
 }, 100);
 
-
-
+function js_to_footer() {
+    remove_action( 'wp_head', 'wp_print_scripts' );
+    remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
+    remove_action( 'wp_head', 'wp_enqueue_scripts', 1 );
+  }
 /**
  * Register the initial theme setup.
  *
