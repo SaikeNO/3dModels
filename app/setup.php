@@ -18,29 +18,10 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js'], null, true);
 
     wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
-
-    if (is_single() && comments_open() && get_option('thread_comments')) {
-        wp_enqueue_script('comment-reply');
-    }
-
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), false, null);
 }, 100);
 
-/**
- * Register the theme assets with the block editor.
- *
- * @return void
- */
-add_action('enqueue_block_editor_assets', function () {
-    if ($manifest = asset('scripts/manifest.asset.php')->load()) {
-        wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ...array_values($manifest));
-        wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), ['sage/vendor.js'], null, true);
 
-        wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
-    }
-
-    wp_enqueue_style('sage/editor.css', asset('styles/editor.css')->uri(), false, null);
-}, 100);
 
 /**
  * Register the initial theme setup.

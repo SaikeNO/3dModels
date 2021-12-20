@@ -1,8 +1,7 @@
 /**
  * External Dependencies
  */
-import 'jquery';
 
-$(() => {
+document.addEventListener('DOMContentLoaded', () => {
   // console.log('Hello world');
 });
