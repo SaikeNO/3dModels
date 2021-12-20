@@ -39,5 +39,8 @@
   },
   "peerDependencies": {
     "jquery": "^3.5.1"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
   }
 }
