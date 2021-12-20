@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/* Global texts
+========================================================================== */
+html {
+  @include font-smoothing(on);
+
+  font-size: font-size(main);
+}
+
+body {
+  font-family: font(main);
+  font-weight: font-weight(regular);
+  line-height: default(line-height);
+
+  color: color(main);
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+
+  color: currentColor;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+.t-upper {
+  text-transform: uppercase;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.t-italic {
+  font-style: italic;
+}
+
+.t-font-secondary {
+  font-family: font(secondary);
+}
+
+.t-truncate {
+  //white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+// Typography
+.t-typo-1 {
+  @include typo-1;
+}
+
+// fsize
+// @for $i from 8 through 100 {
+//   .f-size-#{$i} {
+//     font-size: 1px * $i * 0.8;
+//     line-height: line-height(extra-tiny);
+
+//     @include media(mobile) {
+//       font-size: 1px * $i;
+//     }
+//   }
+// }

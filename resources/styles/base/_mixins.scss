@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Mixins
+   ========================================================================== */
+
+/* 1. Font smoothing
+========================================================================== */
+/* Better font-rendering on OSX
+   https://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+*/
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+/* 2. A clearfix for floated elements
+========================================================================== */
+@mixin clearfix {
+  &:after {
+    display: block;
+    visibility: hidden;
+    clear: both;
+    overflow: hidden;
+
+    height: 0;
+    margin: 0 !important;
+
+    line-height: 0;
+
+    content: '';
+  }
+}
+
+/* 3. Append a modificator class that changes color/bg
+========================================================================== */
+@mixin color-modifiers {
+  @each $name, $hex in $colors {
+    &--#{$name} {
+      color: $hex;
+    }
+  }
+}
+
+@mixin background-modifiers {
+  @each $name, $hex in $colors {
+    &--#{$name} {
+      background-color: $hex;
+    }
+  }
+}
+
+@mixin weight-modifiers {
+  @each $name, $value in $font-weights {
+    &--#{$name} {
+      font-weight: $value;
+    }
+  }
+}
+
+@mixin letter-modifiers {
+  @each $name, $value in $letter-spacings {
+    &--#{$name} {
+      letter-spacing: $value;
+    }
+  }
+}
+
+@mixin transition($duration: 170ms, $timing: ease) {
+  transition-timing-function: $timing;
+  transition-duration: $duration;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Resets
+========================================================================== */
+@mixin reset--list() {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+/* Typography
+========================================================================== */
+// 40 / 48 // 32 / 48 // 24 / 32
+@mixin typo-1 {
+  @include media(mobile) {
+    font-size: 2rem;
+    line-height: line-height(medium);
+  }
+  @include media(tablet) {
+    font-size: 2.5rem;
+    line-height: line-height(tiny);
+  }
+
+  font-size: 1.5rem;
+  line-height: line-height(default);
+}
+
+// 40 / 48 // 32 / 40 // 20 / 24
+@mixin typo-2 {
+  @include media(mobile) {
+    font-size: 2rem;
+    line-height: line-height(small);
+  }
+  @include media(tablet) {
+    font-size: 2.5rem;
+    line-height: line-height(tiny);
+    @include line-height-ie(19px);
+  }
+  @include media(0, tablet) {
+    @include line-height-ie(6px);
+  }
+
+  font-size: 1.25rem;
+  line-height: line-height(tiny);
+}

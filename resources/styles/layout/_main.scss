@@ -1,0 +1,17 @@
+/* ==========================================================================
+   Main content
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+.l-main {
+  background-color: color(bg-grey);
+}
+
+@include media(0, mobile) {
+  .l-main .l-inner-home {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
