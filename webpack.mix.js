@@ -15,7 +15,6 @@ mix.setPublicPath('./public').browserSync('prograffingtheme.local');
 
 mix.sass('resources/styles/app.scss', 'styles').options({
   processCssUrls: false,
-  postCss: [require('tailwindcss')],
 });
 
 mix
