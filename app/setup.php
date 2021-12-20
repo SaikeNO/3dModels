@@ -15,6 +15,7 @@ use function Roots\asset;
  */
 add_action('wp_enqueue_scripts', function () {
     js_to_footer();
+    remove_wp_block_library_css();
     
     wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js'], null, true);
@@ -28,6 +29,12 @@ function js_to_footer() {
     remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
     remove_action( 'wp_head', 'wp_enqueue_scripts', 1 );
   }
+
+  //Remove Gutenberg Block Library CSS from loading on the frontend
+function remove_wp_block_library_css(){
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+} 
 /**
  * Register the initial theme setup.
  *
