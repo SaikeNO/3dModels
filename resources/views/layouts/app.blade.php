@@ -1,13 +1,7 @@
-  @include('partials.header')
+  @include('components.header')
 
-  <main>
+  <main class="l-main">
       @yield('content')
   </main>
 
-  @hasSection('sidebar')
-      <aside class="sidebar">
-          @yield('sidebar')
-      </aside>
-  @endif
-
-  @include('partials.footer')
+  @include('components.footer')

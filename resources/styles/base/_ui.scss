@@ -1,3 +1,9 @@
+.ui-link {
+  display: inline-flex;
+  color: color(black);
+  @include transition;
+}
+
 .ui-bg {
   @include background-modifiers;
 }
