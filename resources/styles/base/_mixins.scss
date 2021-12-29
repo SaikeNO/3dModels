@@ -39,7 +39,7 @@
 ========================================================================== */
 @mixin color-modifiers {
   @each $name, $hex in $colors {
-    &--#{$name} {
+    &--#{'' + $name} {
       color: $hex;
     }
   }
@@ -47,7 +47,7 @@
 
 @mixin background-modifiers {
   @each $name, $hex in $colors {
-    &--#{$name} {
+    &--#{'' + $name} {
       background-color: $hex;
     }
   }
@@ -55,7 +55,7 @@
 
 @mixin weight-modifiers {
   @each $name, $value in $font-weights {
-    &--#{$name} {
+    &--#{'' + $name} {
       font-weight: $value;
     }
   }
@@ -63,7 +63,7 @@
 
 @mixin letter-modifiers {
   @each $name, $value in $letter-spacings {
-    &--#{$name} {
+    &--#{'' + $name} {
       letter-spacing: $value;
     }
   }
