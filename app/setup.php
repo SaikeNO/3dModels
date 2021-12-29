@@ -14,9 +14,14 @@ use function Roots\asset;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    js_to_footer();
     remove_wp_block_library_css();
-    
+
+    js_to_footer();
+
+    disable_emojis();
+
+    deregister_dashicons();
+
     wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js'], null, true);
 
@@ -24,17 +29,50 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), false, null);
 }, 100);
 
+//Remove Gutenberg Block Library CSS from loading on the frontend
+function remove_wp_block_library_css(){
+    wp_dequeue_style( 'wp-block-library' );
+    wp_dequeue_style( 'wp-block-library-theme' );
+} 
+
 function js_to_footer() {
     remove_action( 'wp_head', 'wp_print_scripts' );
     remove_action( 'wp_head', 'wp_print_head_scripts', 9 );
     remove_action( 'wp_head', 'wp_enqueue_scripts', 1 );
   }
 
-  //Remove Gutenberg Block Library CSS from loading on the frontend
-function remove_wp_block_library_css(){
-    wp_dequeue_style( 'wp-block-library' );
-    wp_dequeue_style( 'wp-block-library-theme' );
-} 
+function deregister_dashicons()    { 
+    wp_deregister_style( 'dashicons' ); 
+}
+
+/**
+ * Disable the emoji's
+ */
+function disable_emojis() {
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_action( 'admin_print_styles', 'print_emoji_styles' ); 
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' ); 
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+    add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+}
+   
+/**
+* Filter function used to remove the tinymce emoji plugin.
+* 
+* @param array $plugins 
+* @return array Difference betwen the two arrays
+*/
+function disable_emojis_tinymce( $plugins ) {
+    if ( is_array( $plugins ) ) {
+        return array_diff( $plugins, array( 'wpemoji' ) );
+    } else {
+        return array();
+    }
+}
+
 /**
  * Register the initial theme setup.
  *
