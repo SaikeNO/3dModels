@@ -22,6 +22,8 @@ add_action('wp_enqueue_scripts', function () {
 
     deregister_dashicons();
 
+    disable_node_modules();
+
     wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
     wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js'], null, true);
 
@@ -43,6 +45,13 @@ function js_to_footer() {
 
 function deregister_dashicons()    { 
     wp_deregister_style( 'dashicons' ); 
+}
+
+function disable_node_modules(){
+    add_filter('ai1wm_exclude_content_from_export', function($exclude_filters) {
+        $exclude_filters[] = 'themes/your-theme-name/node_modules';
+        return $exclude_filters;
+      });
 }
 
 /**
