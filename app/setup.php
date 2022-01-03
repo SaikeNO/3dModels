@@ -49,7 +49,8 @@ function deregister_dashicons()    {
 
 function disable_node_modules(){
     add_filter('ai1wm_exclude_content_from_export', function($exclude_filters) {
-        $exclude_filters[] = 'themes/your-theme-name/node_modules';
+        //! Change path to your theme 
+        $exclude_filters[] = 'themes/prograffing-theme/node_modules';
         return $exclude_filters;
       });
 }
