@@ -19,11 +19,11 @@ $breakpoints: (
   mobile: 48em,
   // 768px
   tablet: 64em,
-  // 1025px
+  // 1024px
   tablet-lg: 71.25em,
   // 1140px
   desktop: 87.5em,
-  // 1140px
+  // 1400px
 );
 
 $orientations: (
@@ -36,15 +36,6 @@ $colors: (
   white: #fff,
   white-50: rgba(#fff, 0.5),
   bg-grey: #d3d3d3,
-);
-
-$sizes: (
-  media: 400px,
-  inner: (
-    desktop: 960px,
-    tablet: 760px,
-    mobile: 320px,
-  ),
 );
 
 // Set main font size to body (eg. 12px), then refer to it using rem, eg. secondary: 2rem -> 24px
@@ -90,7 +81,7 @@ $offsets: (
 $fonts: (
   main: #{'Open Sans',
   sans-serif},
-  secondary: 'Exo' //'SangBleu Kingdom',,,,,,,,,,,,
+  secondary: 'Exo' //'SangBleu Kingdom',,,,,,,,,,,,,,,
 );
 
 $defaults: (
