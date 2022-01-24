@@ -49,23 +49,3 @@
 @function line-height($key) {
   @return get-map-value($line-heights, $key);
 }
-
-// This function check 2 levels deep.
-@function size($key, $secondKey: '') {
-  @if map-has-key($sizes, $key) {
-    $temp-size: map-get($sizes, $key);
-
-    @if type-of($temp-size) != 'number' {
-      @if map-has-key($temp-size, $secondKey) {
-        @return map-get($temp-size, $secondKey);
-      } @else {
-        @warn "Size `#{$secondKey}` not defined within `#{$key}`.";
-        @return null;
-      }
-    } @else {
-      @return $temp-size;
-    }
-  }
-  @warn "Unknown `#{$key}` in $sizes.";
-  @return null;
-}
