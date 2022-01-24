@@ -20,8 +20,6 @@ add_action('wp_enqueue_scripts', function () {
 
     disable_emojis();
 
-    deregister_dashicons();
-
     disable_node_modules();
 
     wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
@@ -43,9 +41,6 @@ function js_to_footer() {
     remove_action( 'wp_head', 'wp_enqueue_scripts', 1 );
   }
 
-function deregister_dashicons()    { 
-    wp_deregister_style( 'dashicons' ); 
-}
 
 function disable_node_modules(){
     add_filter('ai1wm_exclude_content_from_export', function($exclude_filters) {
