@@ -26,7 +26,7 @@ class App extends Composer
     public function with()
     {
         return [
-            // 'fields' => collect($this->fields())->toArray(),
+            'fields' => collect($this->fields())->toArray(),
             'siteName' => $this->siteName(),
         ];
     }

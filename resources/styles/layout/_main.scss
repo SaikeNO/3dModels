@@ -7,6 +7,8 @@
 
 .l-main {
   background-color: color(bg-grey);
+  height: 300vh;
+  width: 100%;
 }
 
 @include media(0, mobile) {
@@ -14,4 +16,8 @@
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+.canvas {
+  height: 100vh;
 }

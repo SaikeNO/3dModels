@@ -41,6 +41,8 @@
     "jquery": "^3.5.1"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "gsap": "^3.9.1",
+    "normalize.css": "^8.0.1",
+    "three": "^0.137.5"
   }
 }

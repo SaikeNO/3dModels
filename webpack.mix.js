@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.setPublicPath('./public').browserSync('prograffingtheme.local');
+mix.setPublicPath('./public').browserSync('3d.local');
 if (!mix.inProduction()) {
   mix.webpackConfig({
     devtool: 'inline-source-map',
@@ -27,8 +27,8 @@ mix
   .autoload({ jquery: ['$', 'window.jQuery'] })
   .extract();
 
-mix
-  .copyDirectory('resources/images', 'public/images')
-  .copyDirectory('resources/fonts', 'public/fonts');
+// mix
+//   .copyDirectory('resources/images', 'public/images')
+//   .copyDirectory('resources/fonts', 'public/fonts');
 
 mix.sourceMaps().version();
